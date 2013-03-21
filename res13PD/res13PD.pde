@@ -7,7 +7,7 @@
  */
 
 import org.puredata.processing.PureData;
-
+boolean bd = true;
 PureData pd;
 
 public void setup() {
@@ -25,9 +25,23 @@ public void draw() {
   ellipse(mouseX, mouseY, 20, 20);
   pd.sendFloat("pitch", (float)mouseX / (float)width); // Send float message to symbol "pitch" in Pd.
   pd.sendFloat("volume", (float)mouseY / (float)height);
+  
+  println(float)mouseX / (float)width);
+  
+  
+  
 }
 
+void mousePressed() {
+  if(bd) {
+    bd = false;
+    pd.sendFloat("bdenable", 1);
+  } else {
+    bd = true;
+    pd.sendFloat("bdenable", 0);
 
+  }
+}
 // Implement methods like the following if you want to receive messages from Pd.
 // You'll also need to subscribe to receive symbols you're interested if you want
 // to receive messages.
